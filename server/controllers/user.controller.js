@@ -31,3 +31,39 @@ export const register = async (req, res) => {
 
     }
 }
+
+export const login = async (req, res) => {
+    try {
+        const { email, password, role } = req.body;
+        if (!fullname || !email || !phoneNumber || !password || !role) {
+            return res.status(400).json({
+                message: "Something is missing",
+                success: false
+            })
+        };
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400), json({
+                message: 'Incorrect email or password',
+                success: false
+            })
+        }
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.status(400), json({
+                message: 'Incorrect email or password',
+                success: false
+            })
+        };
+        //check for role
+        if (role !== user.role) {
+            return res.status(400), json({
+                message: "Account doesn't exist with current role",
+                success: false
+            })
+        }
+    }
+    catch (error) {
+
+    }
+}
