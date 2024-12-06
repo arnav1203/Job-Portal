@@ -21,6 +21,8 @@ app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5000;
 
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/company", companyRoute);
+
 
 app.listen(PORT, () => {
     connectDB();
