@@ -34,3 +34,7 @@ export const postJob = async (req, res) => {
 
     }
 }
+
+export const getAllJobs = async (req, res) => {
+
+}
