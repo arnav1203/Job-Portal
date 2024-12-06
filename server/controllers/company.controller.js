@@ -69,3 +69,13 @@ export const getCompanyById = async (req, res) => {
 
     }
 }
+
+export const updateCompany = async (req, res) => {
+    try {
+        const { name, description, website, location } = req.body;
+        const file = req.file;
+    } catch (error) {
+        console.log(error);
+
+    }
+}
