@@ -1,4 +1,9 @@
-import { Popover, PopoverContent } from "@radix-ui/react-popover";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import React from "react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
@@ -10,7 +15,7 @@ const Navbar = () => {
             Job <span className="text-[#F83002]">Portal</span>
           </h1>
         </div>
-        <div>
+        <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-5">
             <li>Home</li>
             <li>Jobs</li>
@@ -18,10 +23,21 @@ const Navbar = () => {
           </ul>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline">Open popover</Button>
+              <Avatar className="cursor-pointer">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+              </Avatar>
             </PopoverTrigger>
-            <PopoverContent>
-              <h1>Hello</h1>
+            <PopoverContent className="w-80">
+              <Avatar className="cursor-pointer">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+              </Avatar>
+              <h4>Arnav Mernstack</h4>
             </PopoverContent>
           </Popover>
         </div>
