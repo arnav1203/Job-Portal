@@ -5,6 +5,7 @@ import { Input } from "../ui/input";
 import { RadioGroup } from "../ui/radio-group";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [input, setInput] = useState({
@@ -32,7 +33,25 @@ const Signup = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log("Form submitted", input);
+    const formData = new FormData();
+    formData.append("fullname", input.fullname);
+    formData.append("email", input.email);
+    formData.append("phoneNumber", input.phoneNumber);
+    formData.append("password", input.password);
+    formData.append("role", input.role);
+    if(input.file){
+        formData.append("file", input.file);
+    }
+    try {
+        const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            withCredentials: true,
+        });
+    } catch (error) {
+        
+    }
   };
   return (
     <div>
@@ -66,7 +85,7 @@ const Signup = () => {
           <div className="my-2">
             <Label>Phone Number</Label>
             <Input
-              type="Number"
+              type="text"
               value={input.phoneNumber}
               name="phoneNumber"
               onChange={changeEventHandler}
