@@ -24,8 +24,6 @@ const Login = () => {
   };
 
   const submitHandler = async (e) => {
-    console.log(e.email, e.password);
-
     e.preventDefault();
     // Handle form submission logic here
 
