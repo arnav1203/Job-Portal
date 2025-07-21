@@ -13,10 +13,10 @@ const category = [
 const CategoryCarousel = () => {
   return (
     <div>
-      <Carousel classname="w-full max-w-xl mx-auto my-20">
+      <Carousel className="w-full max-w-xl mx-auto my-20">
         <CarouselContent>
           {category.map((cat, index) => (
-            <CarouselItem classname="md:basis-1/2 lg-basis-1/3">
+            <CarouselItem className="md:basis-1/2 lg-basis-1/3">
               <Button>{cat}</Button>
             </CarouselItem>
           ))}
