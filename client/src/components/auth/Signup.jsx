@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 const Signup = () => {
   const [input, setInput] = useState({
@@ -55,7 +56,11 @@ const Signup = () => {
         navigate("/login");
         toast.success(res.data.message);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+
+      toast.error(error?.response?.data?.message || "Something went wrong");
+    }
   };
   return (
     <div>
