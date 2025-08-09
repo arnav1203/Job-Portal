@@ -4,6 +4,7 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
+import Browse from "./components/Browse";
 const approuter = createBrowserRouter([
   {
     path: "/",
@@ -18,8 +19,12 @@ const approuter = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: "jobs",
+    path: "/jobs",
     element: <Jobs />,
+  },
+  {
+    path: "/browse",
+    element: <Browse />,
   },
 ]);
 function App() {
