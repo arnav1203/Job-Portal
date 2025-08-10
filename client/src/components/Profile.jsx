@@ -5,6 +5,8 @@ import { Button } from "./ui/button";
 import { Contact, Mail, Pen } from "lucide-react";
 import { Badge } from "./ui/badge";
 
+const skills = ["Html", "Css", "Javascript", "Reactjs"];
+
 const Profile = () => {
   return (
     <div>
@@ -43,8 +45,8 @@ const Profile = () => {
         <div className="my-5">
           <h1>Skills</h1>
           {/* <div className="flex items-center gap-1"> */}
-          {[1, 2, 3, 4].map((item, index) => (
-            <Badge>{item}</Badge>
+          {skills.map((item, index) => (
+            <Badge key={index}>{item}</Badge>
           ))}
           {/* </div> */}
         </div>
