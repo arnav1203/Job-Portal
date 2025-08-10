@@ -1,8 +1,27 @@
-import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import { Label } from "./ui/label";
+import { Button } from "./ui/button";
+import { Loader2 } from "lucide-react";
 
 const UpdateProfileDialog = () => {
+  const [loading, setLoading] = useState(false);
+  const { user } = useSelector((store) => store.auth);
+  const [input, setInput] = useState({
+    fullname: user?.fullname || "",
+    email: user?.email || "",
+    phoneNumber: user?.phoneNumber || "",
+    bio: user?.profile?.bio || "",
+    skills: user?.profile?.skills?.map((skill) => skill) || "",
+    file: user?.profile?.resume || "",
+  });
+  const dispatch = useDispatch();
   return (
     <div>
       <Dialog open={open}>
