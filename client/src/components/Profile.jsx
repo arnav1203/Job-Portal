@@ -3,6 +3,7 @@ import Navbar from "./shared/Navbar";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Contact, Mail, Pen } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 const Profile = () => {
   return (
@@ -29,12 +30,23 @@ const Profile = () => {
             <Pen />
           </Button>
         </div>
-        <div>
-          <Mail />
-          <span>arnav@gmail.com</span>
-
-          <Contact />
-          <span>0987654321</span>
+        <div className="my-5">
+          <div className="flex items-center gap-3 my-2">
+            <Mail />
+            <span>arnav@gmail.com</span>
+          </div>
+          <div className="flex items-center gap-3 my-2">
+            <Contact />
+            <span>0987654321</span>
+          </div>
+        </div>
+        <div className="my-5">
+          <h1>Skills</h1>
+          {/* <div className="flex items-center gap-1"> */}
+          {[1, 2, 3, 4].map((item, index) => (
+            <Badge>{item}</Badge>
+          ))}
+          {/* </div> */}
         </div>
       </div>
     </div>
