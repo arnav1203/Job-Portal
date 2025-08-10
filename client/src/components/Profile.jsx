@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './shared/Navbar'
+import { Avatar, AvatarImage } from './ui/avatar'
 
 const Profile = () => {
   return (
@@ -10,10 +11,10 @@ const Profile = () => {
                         <Avatar className="h-24 w-24">
                             <AvatarImage src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg" alt="profile" />
                         </Avatar>
-                        <div>
+                        {/* <div>
                             <h1 className='font-medium text-xl'>{user?.fullname}</h1>
                             <p>{user?.profile?.bio}</p>
-                        </div>
+                        </div> */}
                     </div>
       </div>
     </div>
