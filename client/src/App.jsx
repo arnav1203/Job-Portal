@@ -8,6 +8,7 @@ import Browse from "./components/Browse";
 import Profile from "./components/Profile";
 import JobDescription from "./components/JobDescription";
 import Companies from "./components/admin/Companies";
+import CompanyCreate from "./components/admin/CompanyCreate";
 const approuter = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,10 @@ const approuter = createBrowserRouter([
   {
     path: "/admin/companies",
     element: <Companies />,
+  },
+  {
+    path: "/admin/companies/create",
+    element: <CompanyCreate />,
   },
 ]);
 function App() {
