@@ -1,6 +1,9 @@
 import React from "react";
+import { Label } from "../ui/label";
+import { useNavigate } from "react-router-dom";
 
 const CompanyCreate = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Navbar />
