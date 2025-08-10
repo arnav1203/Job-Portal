@@ -5,6 +5,7 @@ import Login from "./components/auth/Login";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import Browse from "./components/Browse";
+import Profile from "./components/Profile";
 const approuter = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const approuter = createBrowserRouter([
   {
     path: "/browse",
     element: <Browse />,
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
   },
 ]);
 function App() {
