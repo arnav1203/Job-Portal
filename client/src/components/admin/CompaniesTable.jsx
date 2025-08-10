@@ -14,7 +14,7 @@ import { Edit2, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 
 const CompaniesTable = () => {
-  const { companies, searchCompanyByText } = useSelector(
+  const { company, searchCompanyByText } = useSelector(
     (store) => store.company
   );
 
