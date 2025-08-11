@@ -14,9 +14,9 @@ import { Edit2, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 
 const CompaniesTable = () => {
-  const { company, searchCompanyByText } = useSelector(
-    (store) => store.company
-  );
+  // const { company, searchCompanyByText } = useSelector(
+  //   (store) => store.company
+  // );
 
   return (
     <div>
@@ -35,11 +35,11 @@ const CompaniesTable = () => {
           <tr>
             <TableCell>
               <Avatar>
-                <AvatarImage src={company.logo} />
+                <AvatarImage src="/we" />
               </Avatar>
             </TableCell>
-            <TableCell>{company.name}</TableCell>
-            <TableCell>{company.createdAt.split("T")[0]}</TableCell>
+            <TableCell>Company Name</TableCell>
+            <TableCell>12/12/25</TableCell>
             <TableCell className="text-right cursor-pointer">
               <Popover>
                 <PopoverTrigger>
