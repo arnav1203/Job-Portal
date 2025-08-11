@@ -26,17 +26,14 @@ const AppliedJobTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {/* {allAppliedJobs.length <= 0 ? (
-            <span>You haven't applied any job yet.</span>
-          ) : ( */}
           {allAppliedJobs.length <= 0 ? (
             <span>You haven't applied any job yet.</span>
           ) : (
             allAppliedJobs.map((appliedJob) => (
               <TableRow key={appliedJob._id}>
                 <TableCell>{appliedJob?.createdAt?.split("T")[0]}</TableCell>
-                <TableCell>{appliedJob?.job?.title}</TableCell>
-                <TableCell>{appliedJob.job.company}</TableCell>
+                <TableCell>{appliedJob.job?.title}</TableCell>
+                <TableCell>{appliedJob.job?.company?.name}</TableCell>
                 <TableCell className="text-right">
                   <Badge
                     className={`${
@@ -48,13 +45,11 @@ const AppliedJobTable = () => {
                     }`}
                   >
                     {appliedJob.status.toUpperCase()}
-                    Selected
                   </Badge>
                 </TableCell>
               </TableRow>
             ))
           )}
-          {/* )} */}
         </TableBody>
       </Table>
     </div>
