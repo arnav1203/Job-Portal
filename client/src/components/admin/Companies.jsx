@@ -5,8 +5,10 @@ import { Button } from "../ui/button";
 import CompaniesTable from "./CompaniesTable";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 
 const Companies = () => {
+  useGetAllCompanies();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
