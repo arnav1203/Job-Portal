@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -6,8 +6,8 @@ import { RadioGroup } from "../ui/radio-group";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "sonner";
 import { USER_API_END_POINT } from "@/utils/constant";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
@@ -21,27 +21,19 @@ const Signup = () => {
     role: "",
     file: "",
   });
-  const { loading } = useSelector((state) => state.auth);
+  const { loading, user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const changeEventHandler = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
-
   const changeFileHandler = (e) => {
-    setInput({
-      ...input,
-      file: e.target.files[0],
-    });
+    setInput({ ...input, file: e.target.files?.[0] });
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    const formData = new FormData();
+    const formData = new FormData(); //formdata object
     formData.append("fullname", input.fullname);
     formData.append("email", input.email);
     formData.append("phoneNumber", input.phoneNumber);
@@ -50,13 +42,11 @@ const Signup = () => {
     if (input.file) {
       formData.append("file", input.file);
     }
+
     try {
       dispatch(setLoading(true));
-      // Make the API call to register the user
       const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
       if (res.data.success) {
@@ -65,12 +55,17 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error);
-
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error.response.data.message);
     } finally {
       dispatch(setLoading(false));
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div>
       <Navbar />
@@ -79,7 +74,7 @@ const Signup = () => {
           onSubmit={submitHandler}
           className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
         >
-          <h1 className="font-bold text-xl mb-5">Signup</h1>
+          <h1 className="font-bold text-xl mb-5">Sign Up</h1>
           <div className="my-2">
             <Label>Full Name</Label>
             <Input
@@ -87,7 +82,7 @@ const Signup = () => {
               value={input.fullname}
               name="fullname"
               onChange={changeEventHandler}
-              placeholder="arnav"
+              placeholder="patel"
             />
           </div>
           <div className="my-2">
@@ -97,7 +92,7 @@ const Signup = () => {
               value={input.email}
               name="email"
               onChange={changeEventHandler}
-              placeholder="arnav@gmail.com"
+              placeholder="patel@gmail.com"
             />
           </div>
           <div className="my-2">
@@ -117,7 +112,7 @@ const Signup = () => {
               value={input.password}
               name="password"
               onChange={changeEventHandler}
-              placeholder="arnav"
+              placeholder="patel@gmail.com"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -157,8 +152,8 @@ const Signup = () => {
           </div>
           {loading ? (
             <Button className="w-full my-4">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait...
+              {" "}
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
             </Button>
           ) : (
             <Button type="submit" className="w-full my-4">
@@ -166,7 +161,7 @@ const Signup = () => {
             </Button>
           )}
           <span className="text-sm">
-            Already have an account?
+            Already have an account?{" "}
             <Link to="/login" className="text-blue-600">
               Login
             </Link>
